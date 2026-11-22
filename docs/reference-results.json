@@ -1,0 +1,346 @@
+[
+  {
+    "scenario": "fairness",
+    "results": [
+      {
+        "policy": "fifo",
+        "makespan": 104,
+        "groups": [
+          {
+            "id": "atlas",
+            "name": "Atlas Lab",
+            "jobs": 100,
+            "firstStart": 0,
+            "meanWait": 48
+          },
+          {
+            "id": "boreal",
+            "name": "Boreal Lab",
+            "jobs": 2,
+            "firstStart": 100,
+            "meanWait": 100
+          },
+          {
+            "id": "cedar",
+            "name": "Cedar Lab",
+            "jobs": 0,
+            "firstStart": null,
+            "meanWait": 0
+          }
+        ]
+      },
+      {
+        "policy": "fair",
+        "makespan": 104,
+        "groups": [
+          {
+            "id": "atlas",
+            "name": "Atlas Lab",
+            "jobs": 100,
+            "firstStart": 0,
+            "meanWait": 50
+          },
+          {
+            "id": "boreal",
+            "name": "Boreal Lab",
+            "jobs": 2,
+            "firstStart": 0,
+            "meanWait": 0
+          },
+          {
+            "id": "cedar",
+            "name": "Cedar Lab",
+            "jobs": 0,
+            "firstStart": null,
+            "meanWait": 0
+          }
+        ]
+      },
+      {
+        "policy": "guard",
+        "makespan": 104,
+        "groups": [
+          {
+            "id": "atlas",
+            "name": "Atlas Lab",
+            "jobs": 100,
+            "firstStart": 0,
+            "meanWait": 50
+          },
+          {
+            "id": "boreal",
+            "name": "Boreal Lab",
+            "jobs": 2,
+            "firstStart": 0,
+            "meanWait": 0
+          },
+          {
+            "id": "cedar",
+            "name": "Cedar Lab",
+            "jobs": 0,
+            "firstStart": null,
+            "meanWait": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "scenario": "mixed",
+    "results": [
+      {
+        "policy": "fifo",
+        "makespan": 42,
+        "groups": [
+          {
+            "id": "atlas",
+            "name": "Atlas Lab",
+            "jobs": 6,
+            "firstStart": 0,
+            "meanWait": 12
+          },
+          {
+            "id": "boreal",
+            "name": "Boreal Lab",
+            "jobs": 6,
+            "firstStart": 0,
+            "meanWait": 12
+          },
+          {
+            "id": "cedar",
+            "name": "Cedar Lab",
+            "jobs": 6,
+            "firstStart": 0,
+            "meanWait": 15
+          }
+        ]
+      },
+      {
+        "policy": "fair",
+        "makespan": 40,
+        "groups": [
+          {
+            "id": "atlas",
+            "name": "Atlas Lab",
+            "jobs": 6,
+            "firstStart": 0,
+            "meanWait": 12
+          },
+          {
+            "id": "boreal",
+            "name": "Boreal Lab",
+            "jobs": 6,
+            "firstStart": 0,
+            "meanWait": 9.666666666666666
+          },
+          {
+            "id": "cedar",
+            "name": "Cedar Lab",
+            "jobs": 6,
+            "firstStart": 0,
+            "meanWait": 13
+          }
+        ]
+      },
+      {
+        "policy": "guard",
+        "makespan": 42,
+        "groups": [
+          {
+            "id": "atlas",
+            "name": "Atlas Lab",
+            "jobs": 6,
+            "firstStart": 0,
+            "meanWait": 12
+          },
+          {
+            "id": "boreal",
+            "name": "Boreal Lab",
+            "jobs": 6,
+            "firstStart": 0,
+            "meanWait": 11
+          },
+          {
+            "id": "cedar",
+            "name": "Cedar Lab",
+            "jobs": 6,
+            "firstStart": 0,
+            "meanWait": 14
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "scenario": "aging",
+    "results": [
+      {
+        "policy": "fifo",
+        "makespan": 29,
+        "groups": [
+          {
+            "id": "atlas",
+            "name": "Atlas Lab",
+            "jobs": 1,
+            "firstStart": 0,
+            "meanWait": 0
+          },
+          {
+            "id": "boreal",
+            "name": "Boreal Lab",
+            "jobs": 1,
+            "firstStart": 7,
+            "meanWait": 7
+          },
+          {
+            "id": "cedar",
+            "name": "Cedar Lab",
+            "jobs": 10,
+            "firstStart": 10,
+            "meanWait": 12.3
+          }
+        ]
+      },
+      {
+        "policy": "fair",
+        "makespan": 25,
+        "groups": [
+          {
+            "id": "atlas",
+            "name": "Atlas Lab",
+            "jobs": 1,
+            "firstStart": 0,
+            "meanWait": 0
+          },
+          {
+            "id": "boreal",
+            "name": "Boreal Lab",
+            "jobs": 1,
+            "firstStart": 19,
+            "meanWait": 19
+          },
+          {
+            "id": "cedar",
+            "name": "Cedar Lab",
+            "jobs": 10,
+            "firstStart": 0,
+            "meanWait": 4.5
+          }
+        ]
+      },
+      {
+        "policy": "guard",
+        "makespan": 25,
+        "groups": [
+          {
+            "id": "atlas",
+            "name": "Atlas Lab",
+            "jobs": 1,
+            "firstStart": 0,
+            "meanWait": 0
+          },
+          {
+            "id": "boreal",
+            "name": "Boreal Lab",
+            "jobs": 1,
+            "firstStart": 7,
+            "meanWait": 7
+          },
+          {
+            "id": "cedar",
+            "name": "Cedar Lab",
+            "jobs": 10,
+            "firstStart": 0,
+            "meanWait": 9.9
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "scenario": "failure",
+    "results": [
+      {
+        "policy": "fifo",
+        "makespan": 9,
+        "groups": [
+          {
+            "id": "atlas",
+            "name": "Atlas Lab",
+            "jobs": 1,
+            "firstStart": 0,
+            "meanWait": 0
+          },
+          {
+            "id": "boreal",
+            "name": "Boreal Lab",
+            "jobs": 1,
+            "firstStart": 0,
+            "meanWait": 0
+          },
+          {
+            "id": "cedar",
+            "name": "Cedar Lab",
+            "jobs": 1,
+            "firstStart": 5,
+            "meanWait": 5
+          }
+        ]
+      },
+      {
+        "policy": "fair",
+        "makespan": 9,
+        "groups": [
+          {
+            "id": "atlas",
+            "name": "Atlas Lab",
+            "jobs": 1,
+            "firstStart": 0,
+            "meanWait": 0
+          },
+          {
+            "id": "boreal",
+            "name": "Boreal Lab",
+            "jobs": 1,
+            "firstStart": 0,
+            "meanWait": 0
+          },
+          {
+            "id": "cedar",
+            "name": "Cedar Lab",
+            "jobs": 1,
+            "firstStart": 5,
+            "meanWait": 5
+          }
+        ]
+      },
+      {
+        "policy": "guard",
+        "makespan": 9,
+        "groups": [
+          {
+            "id": "atlas",
+            "name": "Atlas Lab",
+            "jobs": 1,
+            "firstStart": 0,
+            "meanWait": 0
+          },
+          {
+            "id": "boreal",
+            "name": "Boreal Lab",
+            "jobs": 1,
+            "firstStart": 0,
+            "meanWait": 0
+          },
+          {
+            "id": "cedar",
+            "name": "Cedar Lab",
+            "jobs": 1,
+            "firstStart": 5,
+            "meanWait": 5
+          }
+        ]
+      }
+    ]
+  }
+]

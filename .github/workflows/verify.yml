@@ -1,0 +1,36 @@
+name: Verify Strata
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  scheduler:
+    name: Shared policy and real process recovery
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run format:check
+      - run: npm test
+      - run: npm run evidence
+      - name: Confirm browser output matches source
+        run: git diff --exit-code -- docs/app.js docs/engine.js docs/index.html docs/styles.css docs/reference-results.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: strata-evidence
+          path: reports/
+  container:
+    name: Nonroot queue and worker container
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: docker build -t strata:ci .
+      - run: node scripts/container-smoke.mjs

@@ -1,0 +1,53 @@
+services:
+  strata:
+    build: .
+    image: strata:local
+    ports:
+      - '127.0.0.1:8086:8086'
+    environment:
+      ADMIN_TOKEN: ${ADMIN_TOKEN:?Generate an operator token of at least 24 characters}
+    volumes:
+      - queue-data:/app/data
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: ['no-new-privileges:true']
+    restart: unless-stopped
+  worker-a:
+    image: strata:local
+    command: ['node', 'build/worker.js']
+    environment: &worker-env
+      ADMIN_TOKEN: ${ADMIN_TOKEN:?Generate an operator token of at least 24 characters}
+      QUEUE_URL: http://strata:8086
+      WORKER_ID: worker-a
+    depends_on:
+      strata:
+        condition: service_healthy
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: ['no-new-privileges:true']
+  worker-b:
+    image: strata:local
+    command: ['node', 'build/worker.js']
+    environment:
+      <<: *worker-env
+      WORKER_ID: worker-b
+    depends_on:
+      strata:
+        condition: service_healthy
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: ['no-new-privileges:true']
+  worker-c:
+    image: strata:local
+    command: ['node', 'build/worker.js']
+    environment:
+      <<: *worker-env
+      WORKER_ID: worker-c
+    depends_on:
+      strata:
+        condition: service_healthy
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: ['no-new-privileges:true']
+volumes:
+  queue-data:

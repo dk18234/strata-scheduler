@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#101c34" />
+    <meta
+      name="description"
+      content="Strata is an inspectable fair compute scheduler: compare research-group access, reserve logical CPU/GPU capacity, and explore fenced worker recovery."
+    />
+    <title>Strata — Fair Compute Scheduler</title>
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="module" src="./app.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to scheduler</a>
+    <aside class="sidebar">
+      <a href="./" class="brand"
+        ><svg viewBox="0 0 36 36" aria-hidden="true">
+          <path d="m18 3 15 8-15 8L3 11Zm-15 15 15 8 15-8M3 25l15 8 15-8" /></svg
+        ><span>strata<span class="brand-dot">.</span></span></a
+      ><span class="side-label">RESEARCH COMPUTING</span>
+      <nav aria-label="Workspace">
+        <button data-view="queue" class="nav active"><span>▦</span> Scheduling lab</button
+        ><button data-view="allocations" class="nav"><span>◫</span> Group allocations</button
+        ><button data-view="recovery" class="nav"><span>↺</span> Worker recovery</button
+        ><button data-view="evidence" class="nav"><span>≡</span> Evidence &amp; policy</button>
+      </nav>
+      <div class="side-guide">
+        <span class="layers">≋</span>
+        <h2>Shared capacity.<br />Fair opportunity.</h2>
+        <p>Inspect every decision.<br />Keep every reservation honest.</p>
+        <a
+          href="https://github.com/dk18234/strata-scheduler/blob/main/guide/LEARNING.md"
+          target="_blank"
+          rel="noopener"
+          >Learn the system</a
+        >
+      </div>
+      <div class="side-footer">
+        <span class="avatar">DR</span>
+        <div>Dinesh Kumar Rama<small>Engineering portfolio</small></div>
+      </div>
+    </aside>
+    <div class="shell">
+      <header class="topbar">
+        <div>
+          <span class="breadcrumb">Workspace</span><span class="divider">/</span
+          ><strong>Fair compute scheduler</strong>
+        </div>
+        <a
+          href="https://github.com/dk18234/strata-scheduler"
+          class="source"
+          target="_blank"
+          rel="noopener"
+          >View source</a
+        >
+      </header>
+      <main id="main">
+        <section class="hero">
+          <div>
+            <p class="eyebrow">A SCHEDULER YOU CAN EXPLAIN</p>
+            <h1>A fair share<br />of the cluster.</h1>
+            <p>
+              One group brings a hundred jobs. Another brings two.<br />Queue length shouldn’t
+              decide who gets to work.
+            </p>
+          </div>
+          <div class="hero-context">
+            <span class="context-icon">{ }</span><strong>Interactive scheduling lab</strong>
+            <p>
+              Real policy code. Simulated time and resource units.<br />No research cluster or GPU
+              is connected.
+            </p>
+            <a
+              href="https://github.com/dk18234/strata-scheduler#run-the-durable-queue"
+              target="_blank"
+              rel="noopener"
+              >Run the durable backend locally</a
+            >
+          </div>
+        </section>
+        <section class="scenario-section" aria-label="Workload scenarios">
+          <div id="scenarios" class="scenario-tabs"></div>
+        </section>
+        <section class="workbench">
+          <div class="bench-top">
+            <div>
+              <p class="eyebrow">LIVE EXPERIMENT</p>
+              <h2 id="scenario-title">100 jobs vs 2</h2>
+              <p id="scenario-description"></p>
+            </div>
+            <div class="clock">
+              <span>LOGICAL TIME</span><strong id="time">00</strong><small>ticks</small>
+            </div>
+          </div>
+          <div class="controls">
+            <label class="policy-label"
+              >Scheduling policy<select id="policy" aria-label="Scheduling policy">
+                <option value="fifo">Strict FIFO</option>
+                <option value="fair">Weighted fair</option>
+                <option value="guard">Fair + aging guard</option>
+              </select></label
+            >
+            <div class="run-controls">
+              <button id="play" class="button primary" aria-pressed="false">Run simulation</button
+              ><button id="step" class="button secondary">Step tick</button
+              ><button id="finish" class="button secondary">Finish run</button
+              ><button id="reset" class="icon-button" aria-label="Reset experiment">↺</button>
+            </div>
+            <button id="add-open" class="button secondary">＋ Add job</button>
+          </div>
+          <div id="notice" class="notice" role="status" hidden></div>
+          <div id="workspace"></div>
+          <div class="bench-foot">
+            <span
+              >Changes to policy or weights start a fresh reference workload. All browser state
+              stays in this tab.</span
+            ><button id="export" class="text-button">Download experiment JSON</button>
+          </div>
+        </section>
+        <section class="explain-strip">
+          <span>≋</span>
+          <p>
+            <strong>Fairness is a policy. Recovery is a protocol.</strong><br />The same scheduling
+            function powers this lab and a durable SQLite queue with independent HTTP workers,
+            atomic reservations, heartbeats, and fenced completion.
+          </p>
+          <a
+            href="https://github.com/dk18234/strata-scheduler/blob/main/guide/ARCHITECTURE.md"
+            target="_blank"
+            rel="noopener"
+            >Explore the architecture</a
+          >
+        </section>
+        <footer>
+          <span>STRATA / ENGINE 1.0.0</span
+          ><a href="https://dk18234.github.io/webhook-recovery-lab/projects/"
+            >All engineering projects</a
+          ><span>Built by Dinesh Kumar Rama</span>
+        </footer>
+      </main>
+    </div>
+    <dialog id="add-dialog" aria-labelledby="add-title">
+      <form id="add-form">
+        <div class="dialog-head">
+          <h2 id="add-title">Add a research job</h2>
+          <button type="button" id="add-close" class="icon-button" aria-label="Close job form">
+            ×
+          </button>
+        </div>
+        <p>This adds a job to the current browser experiment at the current tick.</p>
+        <label
+          >Job label<input
+            name="label"
+            maxlength="80"
+            required
+            placeholder="Genome alignment" /></label
+        ><label>Research group<select name="group" id="job-group"></select></label>
+        <div class="form-grid">
+          <label
+            >CPU units<input
+              id="job-cpu"
+              name="cpu"
+              type="number"
+              value="1"
+              min="1"
+              max="8"
+              required /></label
+          ><label
+            >GPU units<input
+              id="job-gpu"
+              name="gpu"
+              type="number"
+              value="0"
+              min="0"
+              max="2"
+              required /></label
+          ><label
+            >Duration (ticks)<input name="ticks" type="number" value="4" min="1" max="30" required
+          /></label>
+        </div>
+        <div id="form-error" role="alert" class="form-error" hidden></div>
+        <button type="submit" class="button primary">Add to queue</button>
+      </form>
+    </dialog>
+  </body>
+</html>
