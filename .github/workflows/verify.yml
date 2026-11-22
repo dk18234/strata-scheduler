@@ -19,7 +19,7 @@ jobs:
       - run: npm test
       - run: npm run evidence
       - name: Confirm browser output matches source
-        run: git diff --exit-code -- docs/app.js docs/engine.js docs/index.html docs/styles.css docs/reference-results.json
+        run: git diff --exit-code -- docs
       - uses: actions/upload-artifact@v4
         with:
           name: strata-evidence
