@@ -2070,6 +2070,7 @@ dialog select {
 }
 .table-wrap {
   max-width: 100%;
+  position: relative;
 }
 @media (max-width: 800px) {
   .work-grid {
